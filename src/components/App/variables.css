@@ -1,0 +1,22 @@
+:root {
+  --main: #438c7d;
+  --main-1: #34645a;
+  --main-2: #285048;
+  --bg-1: #ffffff;
+  --bg-2: #b3b3b3;
+  --bg-3: #707070;
+  --bg-0-op: #000000;
+  --bg-1-op: #000000c3;
+  --bg-2-op: #0000008f;
+  --bg-3-op: #00000010;
+  --text-1: #000000;
+  --text-2: #1c1c1c;
+  --text-3: #4d4d4dad;
+  --text-1-op: #ffffff;
+  --text-2-op: #cacaca;
+  --text-3-op: #a6a6a6ad;
+  --required: rgb(255, 0, 0);
+  --true: rgb(30, 255, 30);
+  --err: #ca0000;
+  --warn: #ffbf00;
+}

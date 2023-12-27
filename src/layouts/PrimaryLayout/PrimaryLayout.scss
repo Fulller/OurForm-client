@@ -1,0 +1,35 @@
+#primary-layout {
+  header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--main);
+    padding: 12px 24px;
+
+    .left {
+      height: 40px;
+      .logo {
+        height: 40px;
+      }
+    }
+    .right {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      .display-name {
+        margin-right: 12px;
+        color: var(--text-1-op);
+      }
+      .avatar {
+        height: 40px;
+        width: 40px;
+        border-radius: 100px;
+      }
+    }
+  }
+  main {
+    padding: 16px;
+  }
+}
