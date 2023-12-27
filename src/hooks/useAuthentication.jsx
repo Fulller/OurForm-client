@@ -16,13 +16,12 @@ const useAuthentication = () => {
     let intervalId;
     const pathname = location.pathname;
     const isPathInRoutes = _.some(publicRoutes, { path: pathname });
-
+    const return_uri = window.location.href;
     if (!isPathInRoutes) {
       const authenticateUser = async () => {
         try {
           await refreshToken();
           const user = await getProfile();
-
           if (user) {
             intervalId = setInterval(async () => {
               try {
@@ -30,15 +29,18 @@ const useAuthentication = () => {
               } catch {
                 clearInterval(intervalId);
                 dispatch(userSlide.actions.setUser(null));
-                window.location.href = getAuthUrl("/google");
+                window.location.href = getAuthUrl(
+                  "/google?return_uri=" + return_uri
+                );
               }
             }, intervalRefreshToken);
+          } else {
+            throw new Error();
           }
-
           dispatch(userSlide.actions.setUser(user));
         } catch {
           dispatch(userSlide.actions.setUser(null));
-          window.location.href = getAuthUrl("/google");
+          window.location.href = getAuthUrl("/google?return_uri=" + return_uri);
         }
       };
       authenticateUser();

@@ -60,7 +60,7 @@ function Edit() {
                     >
                       <Question
                         formId={formId}
-                        _id={question._id}
+                        question={question}
                         index={index}
                       >
                         <AddButton index={index}></AddButton>

@@ -9,21 +9,21 @@ import QuestionService from "../../../services/question.service";
 import FormService from "../../../services/form.service";
 import useDebouncedApiCall from "../../../hooks/useDebouncedApiCall";
 import { useSelector, useDispatch } from "react-redux";
-import editFormSelector from "../../../redux/selectors/edit_form.selector";
 import editFormSlide from "../../../redux/slides/edit_form.slide";
 import behaviorSlide from "../../../redux/slides/behavior.slide";
 import behaviorSelector from "../../../redux/selectors/behavior.selector";
 
-function Question({ formId, _id, index, children }) {
+function Question({ formId, index, children, question }) {
   const dispatch = useDispatch();
   const {
+    _id,
     type,
     title = "Question",
     image,
     required,
     score,
     has_answer = false,
-  } = useSelector(editFormSelector.question(_id));
+  } = question;
   const isCurrentQuestionFocus =
     useSelector(behaviorSelector.edit_questionFocusedId) === _id;
   const ref = useRef(null);
@@ -97,7 +97,7 @@ function Question({ formId, _id, index, children }) {
             <Title questionId={_id}></Title>
             <Image src={image} className="question-header-image"></Image>
           </div>
-          <Modify questionId={_id} has_answer={has_answer}></Modify>
+          <Modify question={question}></Modify>
           <div className="question-footer">
             <div className="question-footer-item">
               <span className="label">Has answer:</span>

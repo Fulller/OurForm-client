@@ -1,30 +1,27 @@
 import { useEffect, useRef } from "react";
 import OptionService from "../../../services/option.services";
 import useDebouncedApiCall from "../../../hooks/useDebouncedApiCall";
-import { useSelector, useDispatch } from "react-redux";
-import editFormSelector from "../../../redux/selectors/edit_form.selector";
+import { useDispatch } from "react-redux";
 import editFormSlide from "../../../redux/slides/edit_form.slide";
 import _ from "lodash";
 
 function Option({
   questionId,
-  optionId,
+  option,
   placeholder = "Hãy nhập nội dung của lựa chọn",
 }) {
   const dispatch = useDispatch();
-  const { text } = useSelector(
-    editFormSelector.option({ questionId, optionId })
-  );
+  const { _id, text } = option;
   const textareaRef = useRef(null);
   const debouncedUpdate = useDebouncedApiCall(OptionService.update, 500);
   async function handleTextChange(e) {
     const value = _.replace(e.target.value, /\n/g, "");
-    await debouncedUpdate({ _id: optionId, text: value });
+    await debouncedUpdate({ _id, text: value });
     dispatch(
       editFormSlide.actions.option({
         questionId,
         action: {
-          payload: { _id: optionId, key: "text", value },
+          payload: { _id, key: "text", value },
         },
       })
     );
@@ -59,4 +56,5 @@ function Option({
     </div>
   );
 }
+
 export default Option;

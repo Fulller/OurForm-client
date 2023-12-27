@@ -1,14 +1,13 @@
 import Option from "../components/Option";
 import { Radio } from "antd";
 import MultipleChoiceServices from "../../../services/multiple_choice.service";
-import { useSelector, useDispatch } from "react-redux";
-import editFormSelector from "../../../redux/selectors/edit_form.selector";
+import { useDispatch } from "react-redux";
 import editFormSlide from "../../../redux/slides/edit_form.slide";
 
-function MultipleChoice({ questionId, has_answer }) {
+function MultipleChoice({ question }) {
   const dispatch = useDispatch();
-  const multipleChoice = useSelector(editFormSelector.data(questionId));
-  const { _id, answer_data, question_data } = multipleChoice;
+  const { _id: questionId, has_answer, data, type } = question;
+  const { _id, answer_data, question_data } = data[type];
   const handleChooseAnswer = async (e) => {
     const optionId = e.target.value;
     const isSuccess = await MultipleChoiceServices.updateAnswerData({
@@ -69,10 +68,10 @@ function MultipleChoice({ questionId, has_answer }) {
           return (
             <div className="multiple-choice-option" key={optionId}>
               <Radio value={optionId} disabled={!has_answer}></Radio>
-              <Option questionId={questionId} optionId={optionId}></Option>
+              <Option questionId={questionId} option={option}></Option>
               <button
                 className="delete-btn"
-                onClick={(e) => handleDeleteOption(option._id)}
+                onClick={() => handleDeleteOption(option._id)}
               >
                 <span className="material-symbols-outlined">delete</span>
               </button>
