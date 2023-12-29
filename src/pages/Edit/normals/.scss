@@ -1,0 +1,20 @@
+.question-content {
+  padding: 0px 20px;
+}
+.multiple-choice {
+  .multiple-choice-option {
+    margin: 16px 0;
+    cursor: none;
+    .option-text {
+      margin-left: 6px;
+      font-size: 16px;
+    }
+    .option-checked-icon {
+      margin-left: 12px;
+      i {
+        color: var(--true);
+        font-size: 24px;
+      }
+    }
+  }
+}

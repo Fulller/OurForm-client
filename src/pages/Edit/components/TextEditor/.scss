@@ -1,0 +1,11 @@
+.text-editor-cpn {
+  width: 100%;
+  .ql-container {
+    outline: none;
+    border: none;
+    .ql-editor {
+      font-size: 18px;
+      padding: 0;
+    }
+  }
+}

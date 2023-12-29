@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { questionTypes } from "../../../constans/questiontype.const";
-import FormService from "../../../services/form.service";
+import { questionTypes } from "../../../../constans/questiontype.const";
+import FormService from "../../../../services/form.service";
 import { useDispatch, useSelector } from "react-redux";
-import editFormSlide from "../../../redux/slides/edit_form.slide";
-import editFormSelector from "../../../redux/selectors/edit_form.selector";
-import behaviorSlide from "../../../redux/slides/behavior.slide";
+import editFormSlide from "../../../../redux/slides/edit_form.slide";
+import editFormSelector from "../../../../redux/selectors/edit_form.selector";
+import behaviorSlide from "../../../../redux/slides/behavior.slide";
+import ".scss";
 
 function AddButton({ index }) {
   const dispatch = useDispatch();

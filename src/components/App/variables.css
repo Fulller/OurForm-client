@@ -15,8 +15,8 @@
   --text-1-op: #ffffff;
   --text-2-op: #cacaca;
   --text-3-op: #a6a6a6ad;
-  --required: rgb(255, 0, 0);
-  --true: rgb(30, 255, 30);
-  --err: #ca0000;
+  --required: rgb(181, 112, 0);
+  --true: rgb(0, 219, 0);
+  --err: #b80000;
   --warn: #ffbf00;
 }

@@ -15,10 +15,11 @@ function Edit() {
   const form = useSelector(editFormSelector.get());
   const formId = _.get(form, "_id", null);
   const questions = _.get(form, "questions", []);
+
   const questionFocusedId = useSelector(
     behaviorSelector.edit_questionFocusedId
   );
-  const onDragEnd = async (result) => {
+  async function handleDrapEnd(result) {
     if (!result.destination) {
       return;
     }
@@ -29,12 +30,12 @@ function Edit() {
       editFormSlide.actions.updateQuestionOrder({ questions: newItems })
     );
     await FormService.updateIndeQuestions(formId, _.map(newItems, "_id"));
-  };
+  }
   if (!form) return <></>;
   return (
     <div id="edit-page">
       <Header></Header>
-      <DragDropContext onDragEnd={onDragEnd}>
+      <DragDropContext onDragEnd={handleDrapEnd}>
         <Droppable droppableId="droppable">
           {(provided) => (
             <div

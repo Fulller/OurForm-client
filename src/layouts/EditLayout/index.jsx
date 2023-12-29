@@ -42,7 +42,7 @@ function EditLayout({ children, title = "Our Form" }) {
               )}
             </div>
           </div>
-          <div className="bottom">Setting</div>
+          <div className="bottom"></div>
         </header>
         <main>{children}</main>
       </div>

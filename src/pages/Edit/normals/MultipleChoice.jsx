@@ -1,10 +1,9 @@
 import { Radio } from "antd";
-import { useSelector } from "react-redux";
-import editFormSelector from "../../../redux/selectors/edit_form.selector";
+import ".scss";
 
-function MultipleChoice({ questionId, has_answer }) {
-  const multipleChoice = useSelector(editFormSelector.data(questionId));
-  const { answer_data, question_data } = multipleChoice;
+function MultipleChoice({ question }) {
+  const { has_answer, data, type } = question;
+  const { answer_data, question_data } = data[type];
   return (
     <div className="question-content multiple-choice">
       <Radio.Group value={answer_data} size="large">

@@ -1,0 +1,32 @@
+.option-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: var(--bg-1);
+  padding: 0 8px;
+  border-radius: 4px;
+  max-width: 100%;
+  &:focus-within {
+    outline: 2px solid var(--main);
+  }
+  .option-group-text {
+    outline: none;
+    font-size: 16px;
+    line-height: 30px;
+    width: 300px;
+    min-height: 30px;
+  }
+  .option-group-image {
+    padding: 5px;
+    span {
+      color: var(--main);
+      font-weight: 200;
+    }
+    &:hover {
+      span {
+        font-weight: 400;
+        color: var(--main-2);
+      }
+    }
+  }
+}

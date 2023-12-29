@@ -47,6 +47,9 @@ button {
   }
   &:hover {
     background-color: var(--main-1);
+    span.icon {
+      transform: scale(1.2);
+    }
   }
   &.no-bg {
     font-weight: 700;

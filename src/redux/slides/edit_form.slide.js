@@ -9,6 +9,11 @@ export default createSlice({
       const { form } = payload;
       return form;
     }),
+    updateSetting: produce((form, { payload }) => {
+      const { key, value } = payload;
+      const setting = form.setting;
+      setting[key] = value;
+    }),
     updateQuestionOrder: produce((form, { payload }) => {
       form.questions = payload.questions;
     }),

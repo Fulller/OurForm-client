@@ -1,5 +1,5 @@
 #edit-layout {
-  background-image: url("../../images/backgrounds/rec.svg");
+  background-image: url("../../images/backgrounds/plane.svg");
   background-position: center;
   object-fit: cover;
   background-repeat: no-repeat;
@@ -13,7 +13,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--main);
+    background-color: var(--bg-2-op);
     padding: 12px 24px;
 
     .top {

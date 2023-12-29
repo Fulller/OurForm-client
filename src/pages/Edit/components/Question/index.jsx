@@ -1,17 +1,18 @@
 import { useEffect, useRef } from "react";
 import { Switch } from "antd";
 import Title from "./Title";
-import Image from "./Image";
-import { questionTypesObj } from "../../../constans/questiontype.const";
-import useFocus from "../../../hooks/useFocus";
+import Image from "../Image";
+import { questionTypesObj } from "../../../../constans/questiontype.const";
+import useFocus from "../../../../hooks/useFocus";
 import _ from "lodash";
-import QuestionService from "../../../services/question.service";
-import FormService from "../../../services/form.service";
-import useDebouncedApiCall from "../../../hooks/useDebouncedApiCall";
+import QuestionService from "../../../../services/question.service";
+import FormService from "../../../../services/form.service";
+import useDebouncedApiCall from "../../../../hooks/useDebouncedApiCall";
 import { useSelector, useDispatch } from "react-redux";
-import editFormSlide from "../../../redux/slides/edit_form.slide";
-import behaviorSlide from "../../../redux/slides/behavior.slide";
-import behaviorSelector from "../../../redux/selectors/behavior.selector";
+import editFormSlide from "../../../../redux/slides/edit_form.slide";
+import behaviorSlide from "../../../../redux/slides/behavior.slide";
+import behaviorSelector from "../../../../redux/selectors/behavior.selector";
+import ".scss";
 
 function Question({ formId, index, children, question }) {
   const dispatch = useDispatch();
@@ -49,30 +50,9 @@ function Question({ formId, index, children, question }) {
       })
     );
   }, [isFocus, index, _id, dispatch]);
-  return (
-    <div className="question" ref={ref}>
-      {!isFocus && (
-        <div className="question-normal">
-          <div className="question-header">
-            <span className="index">{index + 1}</span>
-            <div className="question-header-top">
-              <h5 className="title">{title}</h5>
-              {(required || has_answer) && (
-                <div className="option">
-                  <span className={required ? "required" : "hidden"}>
-                    <i className="fa-solid fa-star-of-life"></i> (required)
-                  </span>
-                  <span className={has_answer ? "score" : "hidden"}>
-                    ({score} scores)
-                  </span>
-                </div>
-              )}
-            </div>
-          </div>
-          <Normal questionId={_id} has_answer={has_answer}></Normal>
-        </div>
-      )}
-      {isFocus && (
+  if (isFocus) {
+    return (
+      <div className="question" ref={ref}>
         <div className="question-modify">
           <div className="question-top">
             <span className="index">{index + 1}</span>
@@ -140,9 +120,36 @@ function Question({ formId, index, children, question }) {
             </div>
           </div>
         </div>
-      )}
-      {isFocus && children}
-    </div>
-  );
+        {children}
+      </div>
+    );
+  } else {
+    return (
+      <div className="question" ref={ref}>
+        <div className="question-normal">
+          <div className="question-header">
+            <span className="index">{index + 1}</span>
+            <div className="question-header-top">
+              <div
+                className="title"
+                dangerouslySetInnerHTML={{ __html: title }}
+              ></div>
+              {(required || has_answer) && (
+                <div className="option">
+                  <span className={required ? "required" : "hidden"}>
+                    <i className="fa-solid fa-star-of-life"></i> (required)
+                  </span>
+                  <span className={has_answer ? "score" : "hidden"}>
+                    ({score} scores)
+                  </span>
+                </div>
+              )}
+            </div>
+          </div>
+          <Normal question={question}></Normal>
+        </div>
+      </div>
+    );
+  }
 }
 export default Question;

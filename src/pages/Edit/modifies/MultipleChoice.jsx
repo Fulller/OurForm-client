@@ -3,6 +3,7 @@ import { Radio } from "antd";
 import MultipleChoiceServices from "../../../services/multiple_choice.service";
 import { useDispatch } from "react-redux";
 import editFormSlide from "../../../redux/slides/edit_form.slide";
+import ".scss";
 
 function MultipleChoice({ question }) {
   const dispatch = useDispatch();
@@ -61,13 +62,20 @@ function MultipleChoice({ question }) {
       );
   };
   return (
-    <div className="question-content multiple-choice ">
-      <Radio.Group onChange={handleChooseAnswer} value={answer_data}>
+    <div className="question-content multiple-choice">
+      <Radio.Group
+        onChange={handleChooseAnswer}
+        value={has_answer ? answer_data : null}
+      >
         {question_data.map((option) => {
           const optionId = option._id;
           return (
             <div className="multiple-choice-option" key={optionId}>
-              <Radio value={optionId} disabled={!has_answer}></Radio>
+              <Radio
+                value={optionId}
+                disabled={!has_answer}
+                className="radio-btn"
+              ></Radio>
               <Option questionId={questionId} option={option}></Option>
               <button
                 className="delete-btn"

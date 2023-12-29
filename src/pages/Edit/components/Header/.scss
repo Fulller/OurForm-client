@@ -1,0 +1,60 @@
+.header {
+  width: 100%;
+  padding: 16px 24px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 48px;
+
+  &.focus {
+    background-color: var(--bg-3-op);
+  }
+  &:hover {
+    background-color: var(--bg-3-op);
+  }
+  &:focus-within {
+    background-color: var(--bg-3-op);
+  }
+  .header-normal {
+    .title {
+      font-size: 36px;
+      font-weight: 500;
+      padding: 4px;
+      outline: none;
+      border-radius: 4px;
+    }
+    .score {
+      margin-left: 8px;
+      color: var(--main);
+      font-weight: 100;
+      font-style: italic;
+    }
+    .describe {
+      margin-top: 8px;
+      font-size: 16px;
+      padding: 4px 8px;
+      outline: none;
+      border-radius: 4px;
+      font-style: italic;
+    }
+  }
+  .header-modify {
+    display: flex;
+    flex-direction: column;
+
+    .title {
+      background-color: var(--bg-1);
+      font-size: 36px;
+      line-height: 50px;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      padding: 8px;
+    }
+    .describe {
+      font-size: 16px;
+      line-height: 30px;
+      border-radius: 8px;
+      padding: 0 8px;
+    }
+  }
+}
