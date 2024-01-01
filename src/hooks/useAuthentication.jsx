@@ -6,6 +6,7 @@ import userSlide from "../redux/slides/user.slide.js";
 import { getAuthUrl } from "../tools/url.tool";
 import { useLocation } from "react-router-dom";
 import publicRoutes from "../routes/public.route";
+import { setLS } from "../tools/localStorage.tool";
 import _ from "lodash";
 
 const useAuthentication = () => {
@@ -15,8 +16,9 @@ const useAuthentication = () => {
   useEffect(() => {
     let intervalId;
     const pathname = location.pathname;
+
     const isPathInRoutes = _.some(publicRoutes, { path: pathname });
-    const return_uri = window.location.href;
+    setLS("auth_return_uri", pathname);
     if (!isPathInRoutes) {
       const authenticateUser = async () => {
         try {
@@ -29,9 +31,7 @@ const useAuthentication = () => {
               } catch {
                 clearInterval(intervalId);
                 dispatch(userSlide.actions.setUser(null));
-                window.location.href = getAuthUrl(
-                  "/google?return_uri=" + return_uri
-                );
+                window.location.href = getAuthUrl("/google");
               }
             }, intervalRefreshToken);
           } else {
@@ -40,7 +40,7 @@ const useAuthentication = () => {
           dispatch(userSlide.actions.setUser(user));
         } catch {
           dispatch(userSlide.actions.setUser(null));
-          window.location.href = getAuthUrl("/google?return_uri=" + return_uri);
+          window.location.href = getAuthUrl("/google");
         }
       };
       authenticateUser();

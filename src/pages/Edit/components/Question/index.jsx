@@ -2,9 +2,9 @@ import { useEffect, useRef } from "react";
 import { Switch } from "antd";
 import Title from "./Title";
 import Image from "../Image";
+import InputImage from "./InputImage";
 import { questionTypesObj } from "../../../../constans/questiontype.const";
 import useFocus from "../../../../hooks/useFocus";
-import _ from "lodash";
 import QuestionService from "../../../../services/question.service";
 import FormService from "../../../../services/form.service";
 import useDebouncedApiCall from "../../../../hooks/useDebouncedApiCall";
@@ -12,14 +12,23 @@ import { useSelector, useDispatch } from "react-redux";
 import editFormSlide from "../../../../redux/slides/edit_form.slide";
 import behaviorSlide from "../../../../redux/slides/behavior.slide";
 import behaviorSelector from "../../../../redux/selectors/behavior.selector";
+import AddButton from "../AddButton";
+import _ from "lodash";
 import ".scss";
 
-function Question({ formId, index, children, question }) {
+function Question({
+  formId,
+  index,
+  question,
+  dragging,
+  snapshot,
+  has_index = false,
+}) {
   const dispatch = useDispatch();
   const {
     _id,
     type,
-    title = "Question",
+    title,
     image,
     required,
     score,
@@ -28,6 +37,7 @@ function Question({ formId, index, children, question }) {
   const isCurrentQuestionFocus =
     useSelector(behaviorSelector.edit_questionFocusedId) === _id;
   const ref = useRef(null);
+  const hasTitle = !!_.trim(_.replace(title, /(<([^>]+)>)/gi, ""));
   const [isFocus] = useFocus(ref, isCurrentQuestionFocus);
   const Modify = questionTypesObj[type].modify;
   const Normal = questionTypesObj[type].normal;
@@ -52,10 +62,17 @@ function Question({ formId, index, children, question }) {
   }, [isFocus, index, _id, dispatch]);
   if (isFocus) {
     return (
-      <div className="question" ref={ref}>
+      <div
+        className={`question ${dragging && "dragging"}  ${
+          snapshot.isDragging && "isDragging"
+        }`}
+        ref={ref}
+      >
         <div className="question-modify">
           <div className="question-top">
-            <span className="index">{index + 1}</span>
+            <span className={"index " + (!has_index && "hidden")}>
+              {index + 1}
+            </span>
             <div className="action">
               <button className="top-button">
                 <span className="material-symbols-outlined">content_copy</span>
@@ -74,8 +91,8 @@ function Question({ formId, index, children, question }) {
             </div>
           </div>
           <div className="question-header">
-            <Title questionId={_id}></Title>
-            <Image src={image} className="question-header-image"></Image>
+            <Title question={question}></Title>
+            <InputImage question={question}></InputImage>
           </div>
           <Modify question={question}></Modify>
           <div className="question-footer">
@@ -120,20 +137,32 @@ function Question({ formId, index, children, question }) {
             </div>
           </div>
         </div>
-        {children}
+        <AddButton index={index}></AddButton>
       </div>
     );
   } else {
     return (
-      <div className="question" ref={ref}>
+      <div
+        className={`question ${dragging && "dragging"}  ${
+          snapshot.isDragging && "isDragging"
+        }`}
+        ref={ref}
+      >
         <div className="question-normal">
           <div className="question-header">
-            <span className="index">{index + 1}</span>
+            <span className={"index " + (!has_index && "hidden")}>
+              {index + 1}
+            </span>
             <div className="question-header-top">
               <div
                 className="title"
-                dangerouslySetInnerHTML={{ __html: title }}
+                dangerouslySetInnerHTML={{
+                  __html: hasTitle
+                    ? title
+                    : "Question title has not content yet",
+                }}
               ></div>
+              <Image src={image} className="image"></Image>
               {(required || has_answer) && (
                 <div className="option">
                   <span className={required ? "required" : "hidden"}>

@@ -1,3 +1,5 @@
+@import "../../../../components/App/variables.scss";
+
 .container-add-button {
   width: 100%;
   margin-top: 12px;
@@ -13,7 +15,8 @@
     .question-type {
       display: flex;
       align-items: center;
-      padding: 0 8px;
+      padding: 8px;
+      border-radius: 4px;
       background-color: var(--bg-3-op);
       .label {
         text-align: start;
@@ -25,6 +28,21 @@
           color: var(--text-1-op);
         }
       }
+    }
+  }
+  @media (max-width: $large) {
+    .question-types {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  @media (max-width: $medium) {
+    .question-types {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  @media (max-width: $small) {
+    .question-types {
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 }

@@ -1,27 +1,35 @@
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import { useRef, useCallback } from "react";
+import { useRef, useEffect } from "react";
 import ".scss";
 
 function TextEditor({ value, handleTextChange, placeholder, className = "" }) {
   const quillRef = useRef(null);
-  const handleRef = useCallback((ref) => {
-    if (!ref) return;
-    const quill = ref.getEditor();
-    quill.root.setAttribute("spellcheck", false);
-    quillRef.current = ref;
+
+  useEffect(() => {
+    if (quillRef.current) {
+      const editor = quillRef.current.getEditor();
+      if (editor && editor.root) {
+        editor.root.setAttribute("spellcheck", false);
+      }
+    }
   }, []);
+  const toolbarOptions = [
+    ["bold", "italic", "underline", "strike"],
+    [{ color: [] }, { background: [] }],
+    ["link"],
+    ["clean"],
+  ];
   return (
     <ReactQuill
-      ref={handleRef}
+      ref={quillRef}
       className={"text-editor-cpn " + className}
       value={value}
       placeholder={placeholder}
       onChange={handleTextChange}
       modules={{
-        toolbar: false,
+        toolbar: toolbarOptions,
       }}
-      spellCheck={false}
     />
   );
 }

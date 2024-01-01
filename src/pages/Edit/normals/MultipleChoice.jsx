@@ -8,12 +8,13 @@ function MultipleChoice({ question }) {
     <div className="question-content multiple-choice">
       <Radio.Group value={answer_data} size="large">
         {question_data.map((option) => {
-          const optionId = option._id;
-          const showAnswer = has_answer && answer_data === optionId;
+          let { _id, text } = option;
+          text = text || "Option has not content yet";
+          const showAnswer = has_answer && answer_data === _id;
           return (
-            <div className="multiple-choice-option" key={optionId}>
-              <Radio disabled={!has_answer}>
-                <span className="option-text">{option.text}</span>
+            <div className="multiple-choice-option" key={_id}>
+              <Radio>
+                <span className="option-text">{text}</span>
                 {showAnswer && (
                   <span className="option-checked-icon">
                     <i className="fa-solid fa-check"></i>

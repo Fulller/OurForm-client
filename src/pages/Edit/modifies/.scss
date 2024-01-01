@@ -2,16 +2,10 @@
   margin: 8px 0;
   margin-bottom: 16px;
   width: 100%;
-  .add-option-btn {
-    margin-top: 8px;
-    padding: 8px 0;
-    .label {
-      font-size: 16px;
-    }
-  }
 }
 .multiple-choice {
   .ant-radio-group {
+    width: 100%;
     .multiple-choice-option + .multiple-choice-option {
       margin-top: 12px;
     }
@@ -19,6 +13,10 @@
       display: flex;
       flex-direction: row;
       align-items: flex-start;
+      width: 100%;
+      .text {
+        flex: 1;
+      }
       .radio-btn {
         padding: 6px 0;
       }
@@ -31,10 +29,13 @@
         span {
           transition: all 0s;
           color: var(--main);
-          font-weight: 400;
+          font-weight: 200;
         }
         &:hover {
           background-color: var(--bg-3-op);
+          span {
+            font-weight: 300;
+          }
         }
       }
       &:hover {
@@ -42,6 +43,13 @@
           visibility: visible;
         }
       }
+    }
+  }
+  .add-option-btn {
+    margin-bottom: 16px;
+    padding: 8px 0;
+    .label {
+      font-size: 16px;
     }
   }
 }

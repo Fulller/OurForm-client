@@ -76,7 +76,11 @@ function MultipleChoice({ question }) {
                 disabled={!has_answer}
                 className="radio-btn"
               ></Radio>
-              <Option questionId={questionId} option={option}></Option>
+              <Option
+                questionId={questionId}
+                option={option}
+                className="text"
+              ></Option>
               <button
                 className="delete-btn"
                 onClick={() => handleDeleteOption(option._id)}

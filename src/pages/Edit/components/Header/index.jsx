@@ -11,11 +11,10 @@ import AddButton from "../AddButton";
 import TextEditor from "../TextEditor";
 import ".scss";
 
-function Header() {
+function Header({ setting }) {
   const dispatch = useDispatch();
   const ref = useRef(null);
   const [isFocus] = useFocus(ref, false);
-  const setting = useSelector(editFormSelector.get("setting"));
   const { title, describe } = setting;
   const totalScores = useSelector(editFormSelector.totalScores());
   const debouncedUpdate = useDebouncedApiCall(SettingService.update, 1000);
@@ -58,12 +57,14 @@ function Header() {
         <div className="header-normal">
           <div
             className="title"
-            dangerouslySetInnerHTML={{ __html: title }}
+            dangerouslySetInnerHTML={{ __html: title || "Tiêu đề form" }}
           ></div>
-          {totalScores > 0 && (
-            <span className="score">({totalScores} scores)</span>
-          )}
           <p className="describe">{describe}</p>
+          <div className="wrap-score">
+            {totalScores > 0 && (
+              <span className="score">({totalScores} scores)</span>
+            )}
+          </div>
         </div>
       </div>
     );

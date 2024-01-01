@@ -1,6 +1,6 @@
 .header {
   width: 100%;
-  padding: 16px 24px;
+  padding: 16px;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
@@ -23,11 +23,15 @@
       outline: none;
       border-radius: 4px;
     }
-    .score {
-      margin-left: 8px;
-      color: var(--main);
-      font-weight: 100;
-      font-style: italic;
+    .wrap-score {
+      text-align: end;
+      .score {
+        margin-left: 8px;
+        color: var(--main);
+        font-weight: 100;
+        font-style: italic;
+        font-size: 36px;
+      }
     }
     .describe {
       margin-top: 8px;
@@ -44,8 +48,6 @@
 
     .title {
       background-color: var(--bg-1);
-      font-size: 36px;
-      line-height: 50px;
       border-radius: 8px;
       margin-bottom: 12px;
       padding: 8px;

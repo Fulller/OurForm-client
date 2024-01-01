@@ -1,23 +1,22 @@
+import { useDispatch } from "react-redux";
 import QuestionService from "../../../../services/question.service";
 import useDebouncedApiCall from "../../../../hooks/useDebouncedApiCall";
-import { useSelector, useDispatch } from "react-redux";
-import editFormSelector from "../../../../redux/selectors/edit_form.selector";
 import editFormSlide from "../../../../redux/slides/edit_form.slide";
 import TextEditor from "../TextEditor";
 
-function Title({ questionId }) {
+function Title({ question }) {
   const dispatch = useDispatch();
-  const { title } = useSelector(editFormSelector.question(questionId));
+  const { _id, title } = question;
   const debouncedUpdate = useDebouncedApiCall(QuestionService.update, 500);
   async function handleTextChange(value) {
     dispatch(
       editFormSlide.actions.updateQuestion({
-        _id: questionId,
+        _id,
         key: "title",
         value,
       })
     );
-    await debouncedUpdate(questionId, {
+    await debouncedUpdate(_id, {
       key: "title",
       value: value,
     });
@@ -30,10 +29,6 @@ function Title({ questionId }) {
         handleTextChange={handleTextChange}
         placeholder="Nhập tiêu đề câu hỏi"
       ></TextEditor>
-      <label className="title-group-image">
-        <input type="file" hidden />
-        <span className="material-symbols-outlined">add_photo_alternate</span>
-      </label>
     </div>
   );
 }

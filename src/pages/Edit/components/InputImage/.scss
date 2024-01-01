@@ -1,0 +1,15 @@
+.input-image-cpn {
+  height: 30px;
+  padding: 4px;
+  cursor: pointer;
+  span {
+    color: var(--main);
+    font-weight: 200;
+  }
+  &:hover {
+    span {
+      color: var(--main-2);
+      font-weight: 400;
+    }
+  }
+}

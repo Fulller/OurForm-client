@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { setLS } from "../../tools/localStorage.tool";
+import { setLS, getLS } from "../../tools/localStorage.tool";
 
 const Auth = () => {
   const location = useLocation();
@@ -13,7 +13,7 @@ const Auth = () => {
   refreshToken && setLS("refreshtoken", refreshToken);
 
   useEffect(() => {
-    navigate("/");
+    navigate(getLS("auth_return_uri", "/"));
   }, [navigate]);
   return <main id="auth-page"></main>;
 };

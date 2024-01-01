@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 import editFormSelector from "../../redux/selectors/edit_form.selector";
 import editFormSlide from "../../redux/slides/edit_form.slide";
 import behaviorSelector from "../../redux/selectors/behavior.selector";
+import { useState } from "react";
 import "./Edit.scss";
 
 function Edit() {
@@ -15,6 +16,10 @@ function Edit() {
   const form = useSelector(editFormSelector.get());
   const formId = _.get(form, "_id", null);
   const questions = _.get(form, "questions", []);
+  const setting = _.get(form, "setting", null);
+  const has_index = _.get(setting, "has_index", true);
+
+  const [dragging, setDragging] = useState(false);
 
   const questionFocusedId = useSelector(
     behaviorSelector.edit_questionFocusedId
@@ -29,13 +34,19 @@ function Edit() {
     dispatch(
       editFormSlide.actions.updateQuestionOrder({ questions: newItems })
     );
+    setDragging(false);
     await FormService.updateIndeQuestions(formId, _.map(newItems, "_id"));
   }
   if (!form) return <></>;
   return (
     <div id="edit-page">
-      <Header></Header>
-      <DragDropContext onDragEnd={handleDrapEnd}>
+      <Header setting={setting}></Header>
+      <DragDropContext
+        onDragEnd={handleDrapEnd}
+        onDragStart={() => {
+          setDragging(true);
+        }}
+      >
         <Droppable droppableId="droppable">
           {(provided) => (
             <div
@@ -49,7 +60,7 @@ function Edit() {
                   draggableId={question._id}
                   index={index}
                 >
-                  {(provided) => (
+                  {(provided, snapshot) => (
                     <div
                       ref={provided.innerRef}
                       {...provided.draggableProps}
@@ -63,9 +74,10 @@ function Edit() {
                         formId={formId}
                         question={question}
                         index={index}
-                      >
-                        <AddButton index={index}></AddButton>
-                      </Question>
+                        dragging={dragging}
+                        snapshot={snapshot}
+                        has_index={has_index}
+                      ></Question>
                     </div>
                   )}
                 </Draggable>

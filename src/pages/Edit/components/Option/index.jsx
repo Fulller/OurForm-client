@@ -10,6 +10,7 @@ function Option({
   questionId,
   option,
   placeholder = "Hãy nhập nội dung của lựa chọn",
+  className = "",
 }) {
   const dispatch = useDispatch();
   const { _id, text } = option;
@@ -28,7 +29,7 @@ function Option({
   }
 
   return (
-    <div className="option-group">
+    <div className={"option-group " + className}>
       <TextArea
         className="option-group-text"
         value={text}
