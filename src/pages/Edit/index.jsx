@@ -18,7 +18,6 @@ function Edit() {
   const questions = _.get(form, "questions", []);
   const setting = _.get(form, "setting", null);
   const has_index = _.get(setting, "has_index", true);
-
   const [dragging, setDragging] = useState(false);
 
   const questionFocusedId = useSelector(
