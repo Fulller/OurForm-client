@@ -58,6 +58,7 @@ function Edit() {
                   key={question._id}
                   draggableId={question._id}
                   index={index}
+                  isDragDisabled={questionFocusedId != null}
                 >
                   {(provided, snapshot) => (
                     <div

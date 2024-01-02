@@ -68,6 +68,11 @@ export default createSlice({
           multipleChoice.question_data.push(option);
           break;
         }
+        case "question_data/orther": {
+          const { question_data } = payload;
+          multipleChoice.question_data = question_data;
+          break;
+        }
         default: {
           break;
         }
