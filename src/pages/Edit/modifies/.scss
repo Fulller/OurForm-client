@@ -55,13 +55,32 @@
           visibility: visible;
         }
       }
-      &.isDragging {
-        box-shadow: 0px 0px 5px var(--main);
+    }
+  }
+  &.isDragging {
+    .ant-radio-group {
+      .multiple-choice-option {
+        .delete-btn {
+          visibility: hidden;
+        }
+        .drap-button {
+          visibility: hidden;
+        }
+        &.isDragging {
+          box-shadow: 0px 0px 5px var(--main);
+          .delete-btn {
+            visibility: visible;
+          }
+          .drap-button {
+            visibility: visible;
+          }
+        }
       }
     }
   }
   .add-option-btn {
     margin-bottom: 16px;
+    margin-left: 32px;
     padding: 8px 0;
     .label {
       font-size: 16px;

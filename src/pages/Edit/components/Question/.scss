@@ -106,22 +106,22 @@
       }
       .action {
         text-align: end;
-        .top-button {
+        .top-button:not(.disable) {
           padding: 8px 10px;
           background-color: transparent;
           span {
             color: var(--main);
             font-size: 22px;
             font-weight: 400;
-
             &:hover {
+              transform: scale(1.2);
               font-weight: 600;
               color: var(--main-2);
             }
           }
         }
         .top-button.disable {
-          opacity: 0.5;
+          opacity: 0.1;
         }
       }
     }

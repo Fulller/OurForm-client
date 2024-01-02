@@ -16,6 +16,7 @@ function Edit() {
   const form = useSelector(editFormSelector.get());
   const formId = _.get(form, "_id", null);
   const questions = _.get(form, "questions", []);
+  const questionLength = questions.length;
   const setting = _.get(form, "setting", null);
   const has_index = _.get(setting, "has_index", true);
   const [dragging, setDragging] = useState(false);
@@ -23,6 +24,7 @@ function Edit() {
   const questionFocusedId = useSelector(
     behaviorSelector.edit_questionFocusedId
   );
+
   async function handleDrapEnd(result) {
     if (!result.destination) {
       return;
@@ -77,6 +79,7 @@ function Edit() {
                         dragging={dragging}
                         snapshot={snapshot}
                         has_index={has_index}
+                        questionLength={questionLength}
                       ></Question>
                     </div>
                   )}

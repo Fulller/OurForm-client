@@ -23,6 +23,7 @@ function Question({
   dragging,
   snapshot,
   has_index = false,
+  questionLength,
 }) {
   const dispatch = useDispatch();
   const {
@@ -42,6 +43,7 @@ function Question({
   const Modify = questionTypesObj[type].modify;
   const Normal = questionTypesObj[type].normal;
   const debouncedUpdate = useDebouncedApiCall(QuestionService.update);
+  const [cantUp, cantDown] = [index == 0, index == questionLength - 1];
   async function handleUpdate({ key, value }) {
     dispatch(editFormSlide.actions.updateQuestion({ _id, key, value }));
     await debouncedUpdate(_id, {
@@ -53,13 +55,32 @@ function Question({
     dispatch(editFormSlide.actions.deleteQuestion({ _id }));
     await FormService.deleteQuestion({ _id: formId, questionId: _id });
   }
+  const handleMove = async (action) => {
+    dispatch(
+      editFormSlide.actions.updateQuestionOrderByIndex({ index, action })
+    );
+    await FormService.updateOtherQuestionByIndex({
+      _id: formId,
+      index,
+      action,
+    });
+  };
   useEffect(() => {
     dispatch(
       behaviorSlide.actions.set_edit_questionFocusedId({
         _id: isFocus ? _id : null,
       })
     );
+    if (isFocus && ref) {
+      ref.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
   }, [isFocus, index, _id, dispatch]);
+  if (isFocus) {
+    console.log({ cantUp, cantDown });
+  }
   if (isFocus) {
     return (
       <div
@@ -80,10 +101,18 @@ function Question({
               <button className="top-button" onClick={handleDelete}>
                 <span className="material-symbols-outlined">delete</span>
               </button>
-              <button className="top-button disable">
+              <button
+                className={`top-button ${cantUp && "disable"}`}
+                onClick={() => handleMove("UP")}
+                disabled={cantUp}
+              >
                 <span className="material-symbols-outlined">arrow_upward</span>
               </button>
-              <button className="top-button">
+              <button
+                className={`top-button ${cantDown && "disable"}`}
+                onClick={() => handleMove("DOWN")}
+                disabled={cantDown}
+              >
                 <span className="material-symbols-outlined">
                   arrow_downward
                 </span>

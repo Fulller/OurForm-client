@@ -6,11 +6,13 @@ import Option from "../components/Option";
 import MultipleChoiceServices from "../../../services/multiple_choice.service";
 import _ from "lodash";
 import ".scss";
+import { useState } from "react";
 
 function MultipleChoice({ question }) {
   const dispatch = useDispatch();
   const { _id: questionId, has_answer, data, type } = question;
   const { _id, answer_data, question_data } = data[type];
+  const [isDragging, setIsDragging] = useState(false);
 
   const handleChooseAnswer = async (e) => {
     const optionId = e.target.value;
@@ -88,15 +90,23 @@ function MultipleChoice({ question }) {
     const question_data_clone = _.clone(question_data);
     const [reorderedItem] = question_data_clone.splice(result.source.index, 1);
     question_data_clone.splice(result.destination.index, 0, reorderedItem);
+    setIsDragging(false);
     handleOrtherQuestionData(question_data_clone);
   }
   return (
-    <div className="question-content multiple-choice">
+    <div
+      className={`question-content multiple-choice ${
+        isDragging && "isDragging"
+      }`}
+    >
       <Radio.Group
         onChange={handleChooseAnswer}
         value={has_answer ? answer_data : null}
       >
-        <DragDropContext onDragEnd={handleDrapEnd}>
+        <DragDropContext
+          onDragEnd={handleDrapEnd}
+          onDragStart={() => setIsDragging(true)}
+        >
           <Droppable droppableId="droppable-option">
             {(provided) => (
               <div

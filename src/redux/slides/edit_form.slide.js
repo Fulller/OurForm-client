@@ -17,6 +17,28 @@ export default createSlice({
     updateQuestionOrder: produce((form, { payload }) => {
       form.questions = payload.questions;
     }),
+    updateQuestionOrderByIndex: produce((form, { payload }) => {
+      const { index, action } = payload;
+      let actionNum = 0;
+      switch (action) {
+        case "UP": {
+          if (index == 0) return;
+          actionNum--;
+          break;
+        }
+        case "DOWN": {
+          if (index == form.questions.length - 1) return;
+          actionNum++;
+          break;
+        }
+        default:
+          return;
+      }
+      const questions = Array.from(form.questions);
+      const movedItem = questions.splice(index, 1)[0];
+      questions.splice(index + actionNum, 0, movedItem);
+      form.questions = questions;
+    }),
     addQuestion: produce((form, { payload }) => {
       const { questions } = form;
       const { question, index } = payload;

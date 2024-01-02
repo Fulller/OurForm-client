@@ -38,5 +38,14 @@ const FormService = {
       .then(() => true)
       .catch(() => false);
   },
+  updateOtherQuestionByIndex: ({ _id, index, action }) => {
+    return axios
+      .patch(`/form/question/other_by_index/${_id}`, {
+        index,
+        action,
+      })
+      .then(() => true)
+      .catch(() => false);
+  },
 };
 export default FormService;
