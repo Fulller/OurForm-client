@@ -4,6 +4,7 @@
   margin-bottom: 12px;
   width: 100%;
   transition: all 1s;
+  position: relative;
   .question-normal {
     background-color: transparent;
     padding: 16px;
@@ -255,6 +256,9 @@
     .question-normal,
     .question-modify {
       background-color: var(--bg-2);
+    }
+    .move-question-btn {
+      visibility: visible;
     }
   }
 }

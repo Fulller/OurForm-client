@@ -79,9 +79,6 @@ function Question({
     }
   }, [isFocus, index, _id, dispatch]);
   if (isFocus) {
-    console.log({ cantUp, cantDown });
-  }
-  if (isFocus) {
     return (
       <div
         className={`question ${dragging && "dragging"}  ${
@@ -95,9 +92,6 @@ function Question({
               {index + 1}
             </span>
             <div className="action">
-              <button className="top-button">
-                <span className="material-symbols-outlined">content_copy</span>
-              </button>
               <button className="top-button" onClick={handleDelete}>
                 <span className="material-symbols-outlined">delete</span>
               </button>
