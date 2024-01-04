@@ -1,4 +1,4 @@
-import axios from "../tools/axios.tool";
+import axios from "~/tools/axios.tool";
 import _ from "lodash";
 
 const SettingService = {

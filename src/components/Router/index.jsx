@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import protectRoutes from "../../routes/protect.route";
-import publicRoutes from "../../routes/public.route";
+import protectRoutes from "~/routes/protect.route";
+import publicRoutes from "~/routes/public.route";
 
 const ReactRouter = () => {
   return (

@@ -1,14 +1,14 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Helmet } from "react-helmet";
-import WrapLayout from "../../components/WrapLayout";
+import WrapLayout from "~/components/WrapLayout";
 import { useSelector, useDispatch } from "react-redux";
-import userSelector from "../../redux/selectors/user.selector";
-import logo from "../../images/ourform/ourform3.png";
+import userSelector from "~/redux/selectors/user.selector";
+import logo from "~/images/ourform/ourform3.png";
 import { Link } from "react-router-dom";
-import FormService from "../../services/form.service";
+import FormService from "~/services/form.service";
 import "./EditLayout.scss";
-import editFormSlide from "../../redux/slides/edit_form.slide";
+import editFormSlide from "~/redux/slides/edit_form.slide";
 
 function EditLayout({ children, title = "Our Form" }) {
   const id = useParams().id;

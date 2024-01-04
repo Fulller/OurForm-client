@@ -1,4 +1,4 @@
-import { apiUrl, authUrl } from "../configs";
+import { apiUrl, authUrl } from "~/configs";
 
 const getApiUrl = (path) => {
   return `${apiUrl}${path}`;

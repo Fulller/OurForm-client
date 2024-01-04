@@ -1,4 +1,4 @@
-import axios from "../tools/axios.tool";
+import axios from "~/tools/axios.tool";
 
 const QuestionService = {
   update: (_id, { key, value }) => {

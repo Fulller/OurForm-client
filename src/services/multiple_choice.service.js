@@ -1,5 +1,5 @@
-import axios from "../tools/axios.tool";
-import { getDataApi } from "../tools/lodash.toll";
+import axios from "~/tools/axios.tool";
+import { getDataApi } from "~/tools/lodash.toll";
 
 const MultipleChoiceService = {
   addQuestionData: ({ _id }) => {

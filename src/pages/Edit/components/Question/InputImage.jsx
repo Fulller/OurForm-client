@@ -2,9 +2,9 @@ import { useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import { useDispatch } from "react-redux";
 import { useDropzone } from "react-dropzone";
-import editFormSlide from "../../../../redux/slides/edit_form.slide";
-import QuestionService from "../../../../services/question.service";
-import UploadService from "../../../../services/upload.service";
+import editFormSlide from "~/redux/slides/edit_form.slide";
+import QuestionService from "~/services/question.service";
+import UploadService from "~/services/upload.service";
 import Image from "../Image";
 
 const InputImage = ({ question }) => {

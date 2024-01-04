@@ -1,8 +1,8 @@
-import { getAuthUrl } from "../tools/url.tool";
-import { getHeaders } from "../tools/header.tool";
-import { setLS } from "../tools/localStorage.tool";
-import { getDataApi } from "../tools/lodash.toll";
-import axios from "../tools/axios.tool";
+import { getAuthUrl } from "~/tools/url.tool";
+import { getHeaders } from "~/tools/header.tool";
+import { setLS } from "~/tools/localStorage.tool";
+import { getDataApi } from "~/tools/lodash.toll";
+import axios from "~/tools/axios.tool";
 
 export const getProfile = () => {
   return axios

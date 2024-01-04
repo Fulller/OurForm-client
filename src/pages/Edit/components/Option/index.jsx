@@ -1,7 +1,7 @@
-import OptionService from "../../../../services/option.services";
-import useDebouncedApiCall from "../../../../hooks/useDebouncedApiCall";
+import OptionService from "~/services/option.services";
+import useDebouncedApiCall from "~/hooks/useDebouncedApiCall";
 import { useDispatch } from "react-redux";
-import editFormSlide from "../../../../redux/slides/edit_form.slide";
+import editFormSlide from "~/redux/slides/edit_form.slide";
 import _ from "lodash";
 import TextArea from "../TextArea";
 import ".scss";

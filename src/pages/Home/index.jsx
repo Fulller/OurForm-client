@@ -1,5 +1,5 @@
 import "./Home.scss";
-import FormService from "../../services/form.service";
+import FormService from "~/services/form.service";
 import { useNavigate } from "react-router-dom";
 
 function Home() {

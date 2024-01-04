@@ -1,6 +1,6 @@
 import axios from "axios";
-import { apiUrl } from "../configs";
-import { getAuthUrl } from "../tools/url.tool";
+import { apiUrl } from "~/configs";
+import { getAuthUrl } from "~/tools/url.tool";
 import { getHeaders } from "./header.tool";
 import _ from "lodash";
 

@@ -1,8 +1,8 @@
 import { Helmet } from "react-helmet";
-import WrapLayout from "../../components/WrapLayout";
+import WrapLayout from "~/components/WrapLayout";
 import { useSelector } from "react-redux";
-import userSelector from "../../redux/selectors/user.selector";
-import logo from "../../images/ourform/ourform3.png";
+import userSelector from "~/redux/selectors/user.selector";
+import logo from "~/images/ourform/ourform3.png";
 import { Link } from "react-router-dom";
 import "./PrimaryLayout.scss";
 

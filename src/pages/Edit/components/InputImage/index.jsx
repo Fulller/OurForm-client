@@ -1,4 +1,4 @@
-import UploadService from "../../../../services/upload.service";
+import UploadService from "~/services/upload.service";
 import ".scss";
 
 const InputImage = ({

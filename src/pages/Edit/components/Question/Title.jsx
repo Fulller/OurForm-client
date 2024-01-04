@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
-import QuestionService from "../../../../services/question.service";
-import useDebouncedApiCall from "../../../../hooks/useDebouncedApiCall";
-import editFormSlide from "../../../../redux/slides/edit_form.slide";
+import QuestionService from "~/services/question.service";
+import useDebouncedApiCall from "~/hooks/useDebouncedApiCall";
+import editFormSlide from "~/redux/slides/edit_form.slide";
 import TextEditor from "../TextEditor";
 
 function Title({ question }) {

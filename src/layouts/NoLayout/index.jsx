@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet";
-import WrapLayout from "../../components/WrapLayout";
+import WrapLayout from "~/components/WrapLayout";
 
 function NoLayout({ children, title = "Ourform" }) {
   return (

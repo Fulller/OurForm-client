@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { getProfile, refreshToken } from "../services/user.service";
-import { intervalRefreshToken } from "../configs";
-import userSlide from "../redux/slides/user.slide.js";
-import { getAuthUrl } from "../tools/url.tool";
+import { getProfile, refreshToken } from "~/services/user.service";
+import { intervalRefreshToken } from "~/configs";
+import userSlide from "~/redux/slides/user.slide.js";
+import { getAuthUrl } from "~/tools/url.tool";
 import { useLocation } from "react-router-dom";
-import publicRoutes from "../routes/public.route";
-import { setLS } from "../tools/localStorage.tool";
+import publicRoutes from "~/routes/public.route";
+import { setLS } from "~/tools/localStorage.tool";
 import _ from "lodash";
 
 const useAuthentication = () => {

@@ -2,12 +2,12 @@ import _ from "lodash";
 import Header from "./components/Header";
 import AddButton from "./components/AddButton";
 import Question from "./components/Question";
-import FormService from "../../services/form.service";
+import FormService from "~/services/form.service";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { useSelector, useDispatch } from "react-redux";
-import editFormSelector from "../../redux/selectors/edit_form.selector";
-import editFormSlide from "../../redux/slides/edit_form.slide";
-import behaviorSelector from "../../redux/selectors/behavior.selector";
+import editFormSelector from "~/redux/selectors/edit_form.selector";
+import editFormSlide from "~/redux/slides/edit_form.slide";
+import behaviorSelector from "~/redux/selectors/behavior.selector";
 import { useState } from "react";
 import "./Edit.scss";
 

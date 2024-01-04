@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { setLS, getLS } from "../../tools/localStorage.tool";
+import { setLS, getLS } from "~/tools/localStorage.tool";
 
 const Auth = () => {
   const location = useLocation();

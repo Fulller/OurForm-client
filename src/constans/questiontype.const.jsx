@@ -1,5 +1,5 @@
-import modifyComponent from "../pages/Edit/modifies";
-import normalComponent from "../pages/Edit/normals";
+import modifyComponent from "~/pages/Edit/modifies";
+import normalComponent from "~/pages/Edit/normals";
 
 import _ from "lodash";
 

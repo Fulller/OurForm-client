@@ -1,4 +1,4 @@
-import loadingIcon from "../../../../images/loading/loading1.svg";
+import loadingIcon from "~/images/loading/loading1.svg";
 
 function Image({ src, alt = "image", className = "", isLoading = false }) {
   if (!src) {
