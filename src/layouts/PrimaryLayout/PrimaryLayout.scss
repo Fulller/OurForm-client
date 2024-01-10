@@ -1,12 +1,9 @@
+@import "../natural.layout.scss";
+
 #primary-layout {
   header {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--main);
-    padding: 12px 24px;
-
     .left {
       height: 40px;
       .logo {
@@ -30,6 +27,7 @@
     }
   }
   main {
-    padding: 16px;
+    max-height: calc(100vh - 64px);
+    padding: 0;
   }
 }

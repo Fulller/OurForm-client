@@ -1,9 +1,9 @@
 import { useEffect, useRef } from "react";
-import SettingService from "../../../../services/setting.service";
-import useDebouncedApiCall from "../../../../hooks/useDebouncedApiCall";
-import useFocus from "../../../../hooks/useFocus";
-import editFormSelector from "../../../../redux/selectors/edit_form.selector";
-import editFormSlide from "../../../../redux/slides/edit_form.slide";
+import SettingService from "~/services/setting.service";
+import useDebouncedApiCall from "~/hooks/useDebouncedApiCall";
+import useFocus from "~/hooks/useFocus";
+import editFormSelector from "~/redux/selectors/edit_form.selector";
+import editFormSlide from "~/redux/slides/edit_form.slide";
 import { useDispatch, useSelector } from "react-redux";
 import TextArea from "../TextArea";
 import _ from "lodash";

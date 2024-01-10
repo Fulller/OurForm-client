@@ -13,7 +13,7 @@ function PrimaryLayout({ children, title = "Our Form" }) {
       <Helmet>
         <title>{title}</title>
       </Helmet>
-      <div id="primary-layout">
+      <div id="primary-layout" className="layout">
         <header>
           <div className="left">
             <Link to="/">

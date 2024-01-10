@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import editFormSlide from "~/redux/slides/edit_form.slide";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { Radio } from "antd";
-import Option from "../components/Option";
+import Option from "../features/CreateAndEdit/components/Option";
 import MultipleChoiceServices from "~/services/multiple_choice.service";
 import _ from "lodash";
 import ".scss";

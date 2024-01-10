@@ -3,6 +3,7 @@ import userSlide from "./slides/user.slide";
 import settingSlide from "./slides/setting.slide";
 import editFormSlide from "./slides/edit_form.slide";
 import behaviorSlide from "./slides/behavior.slide";
+import storeFormSlide from "./slides/store_form.slide";
 
 import { setLS } from "../tools/localStorage.tool";
 
@@ -19,6 +20,7 @@ export default configureStore({
     setting: settingSlide.reducer,
     edit_form: editFormSlide.reducer,
     behavior: behaviorSlide.reducer,
+    store_form: storeFormSlide.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(localStorageMiddleware),

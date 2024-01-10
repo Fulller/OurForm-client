@@ -1,0 +1,38 @@
+@import "~/components/App/variables.scss";
+
+.layout {
+  background-image: url("~/images/backgrounds/plane.svg");
+  background-position: center;
+  object-fit: cover;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: end;
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--bg-1-op);
+    padding: 12px 24px;
+  }
+  main {
+    padding: 16px;
+    padding-bottom: 0;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-bottom: 24px;
+    overflow: auto;
+    width: 100%;
+  }
+}

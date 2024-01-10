@@ -1,0 +1,118 @@
+@import "~/components/App/variables.scss";
+#forms {
+  padding: 16px 32px;
+  nav.nav-list-form {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+
+    .nav-list-form-item {
+      padding: 6px 12px;
+      display: flex;
+      align-items: center;
+      background-color: var(--bg-3-op);
+      border-radius: 100px;
+      outline: 1px solid var(--bg-2-op);
+      cursor: pointer;
+      &.actived {
+        background-color: var(--main);
+        span {
+          color: var(--text-1-op);
+        }
+      }
+      &:hover:not(.actived) {
+        span {
+          color: var(--text-2-op);
+        }
+        background-color: var(--bg-2-op);
+      }
+      .label {
+        font-size: 16px;
+        margin-left: 8px;
+      }
+    }
+  }
+  .tags {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+
+    .tag {
+      text-decoration: none;
+      background-color: var(--bg-1);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0px 0px 2px var(--bg-2-op);
+
+      &:hover {
+        box-shadow: 0px 0px 8px var(--bg-1-op);
+        background-color: var(--bg-2);
+        .thumbnail {
+          transform: scale(1.1);
+        }
+      }
+      .wrap-thumbnail {
+        width: 100%;
+        height: 150px;
+        overflow: hidden;
+        .thumbnail {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+      .info {
+        position: relative;
+        padding: 12px 8px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .title {
+          display: -webkit-box;
+          -webkit-line-clamp: 1;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          font-size: 16px;
+          font-weight: 500;
+          margin-bottom: 8px;
+        }
+        .created-at {
+          font-size: 12px;
+          color: var(--text-3);
+        }
+      }
+    }
+  }
+  @media (max-width: $large) {
+    & {
+      .tags {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+  }
+  @media (max-width: $medium) {
+    & {
+      padding: 12px 24px;
+      .tags {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  }
+  @media (max-width: $small) {
+    & {
+      padding: 12px;
+      .tags {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  }
+  @media (max-width: 450px) {
+    & {
+      .tags {
+        grid-template-columns: repeat(1, 1fr);
+      }
+    }
+  }
+}

@@ -1,8 +1,8 @@
-#edit-page {
+#create-and-edit-feature {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 760px;
+  width: 800px;
   max-width: 100%;
   background-color: var(--bg-1);
   padding: 32px;
@@ -11,19 +11,19 @@
   border-radius: 8px;
 }
 
-@import "../../components/App/variables.scss";
+@import "~/components/App/variables.scss";
 @media (max-width: $large) {
-  #edit-page {
+  #create-and-edit-feature {
     padding: 32px;
   }
 }
 @media (max-width: $medium) {
-  #edit-page {
+  #create-and-edit-feature {
     padding: 16px;
   }
 }
 @media (max-width: $small) {
-  #edit-page {
+  #create-and-edit-feature {
     padding: 8px;
   }
 }
